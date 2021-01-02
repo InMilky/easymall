@@ -1,0 +1,117 @@
+@CHARSET "UTF-8";
+
+#content{
+	width: 100%;
+	text-align: center;
+}
+#sel{
+	height: 36px;
+	width: 100%;
+	font-size: 18px;
+	text-align: center;
+}
+#sel ul{
+	list-style-type: none;
+}
+#sel ul li{
+	float: left;
+	margin-left: 2rem;
+}
+#sel input[type=radio]{
+	width: 16px;
+	height: 16px;
+}
+h2{
+	width: 20%;
+	height: 28px;
+	text-align: left;
+	border-left: 6px solid #CA141D;
+	padding-left:1rem; 
+}
+
+#do{
+	width: 80%;
+	text-align: center;
+}
+
+#do #oT{
+	width: 100%;
+	color:#333333;
+	line-height:30px;
+	height:30px;
+	border: 1px solid #d8d8d8;
+}
+#do #oT tr{
+	height:36px;
+}
+#do #oT tr td{
+	font-size: 15px;
+	text-align: left;
+	padding-left: 1rem;
+}
+#do #oT span{
+	font-size: 15px;
+	text-align: left;
+	padding-left: 1rem;
+	color: #0000EE;
+    cursor: pointer;
+}
+#do .tT{
+	background-color:#CA141D;
+	width:160px;
+	font-size: 16px;
+	text-align: center;
+	color: white;
+}
+
+#do #send{
+	 height:45px;
+	 font-size:22px;
+	 color:white;
+	 text-align:center;
+	 background-color:#CA141D;
+	 font-weight: bold;
+	 padding-top: 10px;
+}
+#send input{
+	font-size: 15px;
+	border: 0;
+	height: 26px;
+	border-radius: 5px;
+}
+#send input[type=submit]{
+	height:28px;
+	width:56px;
+	border:0;
+	font-size: 15px;
+	color: black;
+	background-color: white;
+	border-radius: 5px;
+	margin-left: 10px;
+}
+#do #pT{
+	 width:100%;
+	 border:0; 
+	 background-color:#d8d8d8;
+	 color:#333333;
+}
+#do #pT .pth{
+	 width:20%;
+	 height:36px;
+	 text-align: center;
+	 vertical-align: middle;
+	 background-color: #f3f3f3;
+	 font-size: 18px;
+}
+#do #pT td{
+	text-align: center;
+	vertical-align: middle;
+	background-color: white;
+	font-size: 16px;
+}
+
+.Order_price{
+	text-align: right;
+	font-size: 2rem;
+	color: #CA141D;
+}

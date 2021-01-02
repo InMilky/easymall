@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+
+#content{
+	width: 100%;
+	text-align: center;
+}
+
+#undo{
+	width: 80%;
+	text-align: center;
+}
+#undo #table{
+	width: 100%;
+	border: 1px solid #CA141D;
+}
+
+#undo dt{
+	background-color: #CA141D;
+	font-size: 18px;
+	color: white;
+}
+#undo #table table{
+	width: 100%;
+	border: 1px solid #CA141D;
+}
+#undo #table table tr{
+	height:36px;
+}
+
+#send form{
+	text-align: center;
+	border-collapse: collapse;
+	border: 2px solid #CA141D;
+	border-top: 0;
+	font-size: 15px;
+	margin:0 auto ;
+}
+#send input{
+	width: 70%;
+	height: 20px;
+	display: block;
+	padding: 1px;
+	margin-top: 5px;
+}
+#send input[type=submit]{
+	width: 24%;
+	height:100%;
+	border:0;
+	font-size: 15px;
+	color: white;
+	background-color: #CA141D;
+}

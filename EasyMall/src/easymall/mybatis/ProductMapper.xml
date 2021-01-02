@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="easymall.dao.ProductsDao">
+<!-- 商品种类的显示  -->
+<select id="allcategorys" resultType="easymall.po.Category">
+	select * from category
+</select>
+
+<!-- 根据输入条件查询商品信息 -->
+<select id="prodlist" parameterType="map" resultType="easymall.po.Products">
+	select * from products where (price between #{minPrice} and #{maxPrice})
+	<if test="name!=null and name!=''">
+		and name like concat('%',#{name},'%')
+	</if>
+	<if test="category!=null and category!=''">
+		and category=#{category} 
+	</if>
+</select>
+<select id="oneProduct" parameterType="String" resultType="easymall.po.Products">
+	select * from products where id=#{pid}
+</select>
+<select id="showAllProds" resultType="easymall.po.Products">
+	select * from products
+</select>
+<select id="proclass" parameterType="Integer" resultType="easymall.po.Products">
+	select * from products where category=#{category}
+</select>
+
+<insert id="save" parameterType="easymall.po.Products">
+	insert into products(id,name,price,category,pnum,imgurl,description)
+	 values( #{id},#{name},#{price},#{category},#{pnum},#{imgurl},#{description})
+</insert>
+
+<select id="findByImgurl" parameterType="String" resultType="easymall.po.Products">
+	select * from products where imgurl=#{imgurl}
+</select>
+
+<!-- 根据输入条件搜索商品 -->
+<select id="searchprods" parameterType="String" resultType="easymall.po.Products">
+	select * from products where name like concat('%',#{name},'%')
+</select>
+
+<!-- 根据soldnum排序prods并输出 -->
+<select id="topsales" resultType="easymall.po.Products">
+	select * from products where soldnum > 0 order by soldnum desc
+</select>
+
+<!-- 根据输入条件查询销售榜商品信息 -->
+<select id="prodToplist" parameterType="map" resultType="easymall.po.Products">
+	select * from products where 1
+	<if test="name!=null and name!=''">
+		and name like concat('%',#{name},'%')
+	</if>
+	<if test="category!=null and category!=''">
+		and category=#{category} 
+	</if>
+</select>
+
+<!-- 查找所有未发货的订单 -->
+<select id="unordersByOI" parameterType="String" resultType="easymall.po.Products">
+	select * from products 
+	where id in (select product_id from orderitem where order_id in (select id from orders where paystate=1))
+</select>
+<!-- 删除商品 -->
+<delete id="delProd" parameterType="easymall.po.Products">
+	delete from products where id=#{pid}
+</delete>
+
+<update id="updateProduct" parameterType="easymall.po.Products">
+	update products 
+	<set >
+        <if test="name != null">
+            name = #{name},
+        </if>
+        <if test="price != null">
+            price=#{price },
+        </if>
+        <if test="category != null">
+            category=#{category },
+        </if>
+        <if test="pnum != null">
+            pnum=#{pnum },
+        </if>
+        <if test="imgurl != null">
+            imgurl=#{imgurl },
+        </if>
+        <if test="description != null">
+            description=#{description } 
+        </if>
+    </set>
+	where id=#{id}
+</update>
+
+</mapper>

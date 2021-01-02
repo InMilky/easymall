@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+/* prodsinfo.css */
+.prodsinfo table{ 
+	margin: 1rem auto ; 
+	text-align: center;
+	border-collapse:collapse;
+	border-bottom: 2px solid #CA141D;
+}
+.prodsinfo td, th{ 
+	padding: 7px;
+	border-bottom: 1px solid #CA141D;
+}
+
+.prodsinfo th{
+	background-color: #CA141D;
+	color: white;
+	font-size: 16px;
+}
+.prodsinfo th.ths{
+	width: 100px;
+} 
+.prodsinfo input.pnum{
+	width:80px;
+	height:25px;
+	font-size: 18px;
+	text-align:center;
+}
+

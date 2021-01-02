@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="easymall.dao.CategoryDao">
+
+<!-- 显示类别 -->
+<select id="showCategory" resultType="easymall.po.Category">
+	select * from category
+</select>
+<!-- 显示特定类别 -->
+<select id="oneCategory" resultType="easymall.po.Category">
+	select * from category where id=#{id}
+</select>
+<!-- 添加商品类别 -->
+<insert id="addCategory" parameterType="easymall.po.Category">
+	insert into category(id,name,description) values(null,#{name},#{description})
+</insert>
+<!-- 修改类别 -->
+<update id="updateCategory" parameterType="easymall.po.Category">
+	update category set name=#{name},description=#{description} where id=#{id}
+</update>
+<!-- 删除类别 -->
+<delete id="delCategory" parameterType="easymall.po.Category">
+	delete from category where id=#{categoryID}
+</delete>
+
+</mapper>

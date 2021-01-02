@@ -1,0 +1,71 @@
+@CHARSET "UTF-8";
+
+
+/*搜索条*/
+#content #search_div{
+	background-color: #e9e4e4;
+	padding:8px;
+	text-align: center;
+}
+#content #search_div .input_span{
+	margin: 0px 0px 0px 15px;
+	color: #CA141D;
+	font-size: 15px;
+	font-weight: bold;
+}
+#content #search_div input[type=text]{
+	border: 1px solid #CA141D;
+	height:21px;
+}
+#content #search_div input[name=name]{
+	width:200px;
+}
+#category{
+	width:100px;
+	height: 18px;
+}
+#content #search_div input[type=submit],#content #search_div input[type=button]{
+	border-style:none;
+	width:100px;
+	height:28px;
+	cursor: pointer;
+	color:#fff;
+	background-color:#CA141D;
+	margin-left:5px;
+	margin-left: 2rem;
+}
+
+
+
+/* 下方表格 */
+#salesRanking{
+	width: 100%;
+	text-align: center;
+}
+
+#salesRanking table{
+	width:66%;
+	text-align: center;
+	margin: 2rem auto;
+	border-collapse: collapse;
+	border: 1px solid #CA141D;
+}
+#salesRanking tr{
+	padding-top: 10px;
+}
+#salesRanking tr td{
+	text-align:center;
+	font-size: 13px;
+	padding-bottom: 1rem;
+	padding-top: 1rem;
+}
+.th{
+	height: 56px;
+}
+#salesRanking th{
+	font-size: 16px;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	background-color: #CA141D;
+	color: white;
+}

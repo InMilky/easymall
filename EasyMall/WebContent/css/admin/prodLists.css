@@ -1,0 +1,58 @@
+@CHARSET "UTF-8";
+body{
+	font-family: "微软雅黑";
+	width: 100%;
+}
+.content{
+	width: 100%;
+	height: auto;
+}
+/* left */
+.content .left{
+	width:15%;
+	height:192px;
+	float:left;
+	background-color:#CA141D;
+	font-family: "微软雅黑";
+	color:white;
+	font-size: 18px;
+	margin: 1rem;
+	position: fixed;
+	top:11rem;
+	left: 0;
+}
+
+.content .left ul{
+	padding:0px;
+	margin:0px;
+	width: 100%;
+}
+
+.content .left li{
+	list-style-type:none;
+	float:left;
+	width: 100%;
+}
+.content .left li:hover{
+	background-color: red;
+}
+.content .left li a{
+	display: block;
+	line-height:38px;
+	color:white;
+	text-decoration: none;
+	text-align: center;
+	font-size:16px;
+	padding: 5px;
+}
+
+.content .right{
+	width:82%;
+	float: left;
+	position: absolute;
+	right: 0;
+}
+.content iframe{
+	width: 99%;
+}
+
