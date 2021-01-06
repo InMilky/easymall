@@ -159,6 +159,15 @@ public class ProductsServiceImpl implements ProductsService {
 		return "商品添加成功";
 	}
 
+	@Override
+	public List<Products> allproducts() {
+		return productsDao.allproducts();
+	}
+
+	@Override
+	public Integer getNumViaCategory(Integer category) {
+		return productsDao.getNumViaCategory(category);
+	}
 
 
 }

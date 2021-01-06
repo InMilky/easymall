@@ -26,7 +26,7 @@
 				</c:forEach>
 			</select>
 			<input type="submit" value="查 询">
-			<input type="button" value="导出Excel">
+			<input type="button" value="导出Excel" onclick="javascript:window.location.href='${pageContext.request.contextPath}/chart/printtable'">
 		</form>
 	</div>
 	<div id="salesRanking" style="text-align: center">

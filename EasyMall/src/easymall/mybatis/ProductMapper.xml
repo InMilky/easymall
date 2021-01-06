@@ -94,4 +94,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where id=#{id}
 </update>
 
+<select id="allproducts" resultType="easymall.po.Products">
+		select * from products
+	</select>
+	<select id="getNumViaCategory" parameterType="Integer" resultType="Integer">
+		select count(*) from products where category=#{category}
+	</select>
+
+
 </mapper>

@@ -24,6 +24,7 @@
 			<li><a href="${ pageContext.request.contextPath }/admin/prodLists">商品管理</a></li>
 			<li><a href="${ pageContext.request.contextPath }/adminCategory/categoryLists">类型管理</a></li>
 			<li><a href="${ pageContext.request.contextPath }/admin/showorder">订单管理</a></li>
+			<li><a href="${ pageContext.request.contextPath }/chart/barPie">图形分析</a></li>
 			<li><a href="${ pageContext.request.contextPath }/index.jsp">返回前台</a></li>
 		</ul>
 				
