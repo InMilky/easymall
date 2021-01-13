@@ -94,6 +94,17 @@ public class ProductsServiceImpl implements ProductsService {
 	}
 
 	@Override
+	public List<Products> allproducts() {
+		return productsDao.allproducts();
+	}
+
+	@Override
+	public Integer getNumViaCategory(Integer category) {
+		return productsDao.getNumViaCategory(category);
+	}
+
+	
+	@Override
 	public String save(MyProducts myProducts, HttpServletRequest request) {
 //	1.判断后缀是否合法
 //		获取图名称，后缀名称

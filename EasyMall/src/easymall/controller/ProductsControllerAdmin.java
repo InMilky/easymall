@@ -100,6 +100,8 @@ public class ProductsControllerAdmin {
 	public String salelists(Model model){
 		List<Products> prodtops = productsService.topsales();
 		model.addAttribute("prodtops", prodtops);
+		List<Category> categorys = productsService.allcategorys();
+		model.addAttribute("categorys", categorys);
 		return "admin/sale_lists";
 	}
 

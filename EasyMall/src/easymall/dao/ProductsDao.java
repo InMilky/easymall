@@ -43,4 +43,10 @@ public interface ProductsDao {
 	public List<Products> unordersByOI();
 //	更新商品属性
 	public int updateProduct(Products products);
+	
+	//查找所有商品
+	public List<Products> allproducts();
+	//获取某一类的商品的数量
+	public Integer getNumViaCategory(Integer category);
+
 }
