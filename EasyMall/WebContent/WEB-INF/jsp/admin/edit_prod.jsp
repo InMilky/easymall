@@ -6,13 +6,19 @@
 <script  type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-1.4.2.js"></script>
 		
 	<div class="addprod">
-	<jsp:useBean id="products" class="easymall.po.Products" scope="request"></jsp:useBean>
-	<form:form modelAttribute="products" onsubmit="return formobj.checkForm();" method="POST" 
-	   action="${ pageContext.request.contextPath }/adminProducts/update" enctype="multipart/form-data">	
+	<jsp:useBean id="product" class="easymall.po.Products" scope="request"></jsp:useBean>
+	<form:form modelAttribute="product" onsubmit="return formobj.checkForm();" method="POST" 
+	   action="${ pageContext.request.contextPath }/adminProducts/update" ><!-- enctype="multipart/form-data">	 -->
 	<fieldset>
 	<legend> 修改商品 </legend>			
 		<table >
 		<tr><td colspan="2" style="color:red;text-align:center;font-size: 15px">${ msg }</td></tr>		
+		<tr>
+            <td>
+            <font color="red">*</font>商品ID：</td>
+            <td><form:input path="id" id="id" readonly="true"/><span></span>
+            </td>
+        </tr>
 		<tr>
             <td>
             <font color="red">*</font>商品名：</td>
@@ -39,7 +45,7 @@
         </tr>
         <tr><td>
             <font color="red">*</font>图片：</td>
-            <td><input type="file" name="imgurl"/></td>
+            <td><input type="file" /></td>
         </tr>
         <tr><td>
             <font color="red">*</font>商品描述：</td> <!-- <form:input path="description"/> <textarea name="description" id="textarea"></textarea> -->
