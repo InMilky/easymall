@@ -57,6 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<if test="category!=null and category!=''">
 		and category=#{category} 
 	</if>
+	 order by soldnum desc
 </select>
 
 <!-- 查找所有未发货的订单 -->
