@@ -1,4 +1,4 @@
-package easymall.po;
+package easymall.pojo;
 
 public class Products {
 
@@ -7,7 +7,6 @@ public class Products {
 	private Double price;
 	private Integer category;
 	private Integer pnum;
-	private Integer soldnum;
 	private String imgurl;
 	private String description;
 	
@@ -41,12 +40,6 @@ public class Products {
 	}
 	public void setPnum(Integer pnum) {
 		this.pnum = pnum;
-	}
-	public Integer getSoldnum() {
-		return soldnum;
-	}
-	public void setSoldnum(Integer soldnum) {
-		this.soldnum = soldnum;
 	}
 	public String getImgurl() {
 		return imgurl;

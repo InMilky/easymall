@@ -6,9 +6,9 @@
 <script  type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-1.4.2.js"></script>
 		
 	<div class="addprod">
-	<jsp:useBean id="product" class="easymall.po.Products" scope="request"></jsp:useBean>
-	<form:form modelAttribute="product" onsubmit="return formobj.checkForm();" method="POST" 
-	   action="${ pageContext.request.contextPath }/adminProducts/update?id=${product.id}" enctype="multipart/form-data">	
+	<jsp:useBean id="products" class="easymall.po.Products" scope="request"></jsp:useBean>
+	<form:form modelAttribute="products" onsubmit="return formobj.checkForm();" method="POST" 
+	   action="${ pageContext.request.contextPath }/adminProducts/update" enctype="multipart/form-data">	
 	<fieldset>
 	<legend> 修改商品 </legend>			
 		<table >

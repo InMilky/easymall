@@ -11,7 +11,8 @@
 			//浏览器只要发现图片的src地址变化，图片就会变化。
 			$(function(){
 
-				
+				var yanzhengma = null;	//记录验证码
+
 				$("#img").click(function(){
 					$(this).attr("src","${ pageContext.request.contextPath }/index/valiImage?time="+new Date().getTime());
 				});
@@ -48,10 +49,13 @@
 				$("input[name='valistr']").blur(function(){
 					formobj.checkNull("valistr", "验证码不正确！");
 				});
-				
+				$("input[name='yanzhengma']").blur(function(){
+					formobj.checkNull("yanzhengma","错误");
+				});
 			});
 			
 			/*注册表单的js校验*/
+			
 			var formobj={
 				"checkForm":function(){
 					//1.非空校验				
@@ -63,7 +67,10 @@
 					var res6=this.checkNull("valistr", "验证码不能为空！");
 					var res7=this.checkPassword("password","两次密码输入不一致");
 					var res8=this.checkEmail("email","邮箱格式不正确！");
-					return res1 && res2 && res3 && res4 && res5 && res6 && res7 && res8;				
+					
+					//2.验证码校验
+					var res9=this.checkYanzhengma(yanzhengma);
+					return res1 && res2 && res3 && res4 && res5 && res6 && res7 && res8 && res9;				
 				},
 				"checkNull":function(name,msg){
 					var value=$("input[name='"+name+"']").val();  
@@ -107,11 +114,40 @@
 						}
 					}
 					return true;
+				},
+				
+				//4.邮箱验证码校验
+				"checkYanzhengma":function(yzm){
+					var fyzm = $("input[name=yanzhengma]").val().trim();
+					if(yzm==fyzm){
+						this.setMsg("yanzhengma","正确");
+						return true;
+					}else{
+						this.setMsg("yanzhengma","错误");
+						return false;
+					}
 				}
 				
 				
 			};
-			</script>
+			
+			function getYanzhengma() {
+				if(formobj.checkNull("email","邮箱不能为空！")&&formobj.checkEmail("email","邮箱格式不正确！")){
+					alert("验证码已发送至邮箱！");
+					$.ajax({
+						url : '${ pageContext.request.contextPath }/user/yanzheng',
+						type: 'POST',
+						data: {
+							'email':$("input[name='email']").val()
+						},
+						success : function(data) {
+							yanzhengma = data;
+						}
+					})
+				}
+
+			}
+		</script>
 	</head>
 	<body>
 	<!-- onsubmit事件在表单提交时触发，该事件会根据返回值决定是否提交表单，  
@@ -159,6 +195,15 @@
 					<td class="tds">邮箱：</td>
 					<td>
 						<input type="text" name="email" value="${ param.email }"/>
+						<span></span>
+					</td>
+					<!-- 邮箱验证 -->
+				</tr>
+				<tr>
+					<td class="tds">邮箱验证码：</td>
+					<td>
+						<input type="text" name="yanzhengma"/>
+						<a href="###" onclick="getYanzhengma()">获取验证码</a>
 						<span></span>
 					</td>
 				</tr>

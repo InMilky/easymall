@@ -74,17 +74,17 @@ public class ProductsControllerAdmin {
 		List<Category> categorys = productsService.allcategorys();
 		Products product = productsService.oneProduct(pid);
 		model.addAttribute("categorys", categorys);
-		model.addAttribute("product",product);
+		model.addAttribute("products",product);
 		return "admin/edit_prod";
 	}
 	
 	@RequestMapping("/update")
-	public String update(String id,Products products,Model model){
-//		更新商品属性
-		System.out.println("edit");
-		products.setId(id);
-		productsService.updateProduct(products);
+	public String update(@Validated @ModelAttribute("products") Products products){
+//		更新商品属性@ModelAttribute("products") Products product
+		System.out.println("into-update");
+//		productsService.updateProduct(product);
 		return "redirect:/adminProducts/updateprod";
+//		return "admin/prods_info";
 	}
 	
 	

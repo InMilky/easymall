@@ -10,7 +10,8 @@
 	<!-- 报错Tomcat问题未引入，Win-Perf-Server-Run Time-ADD- -->
 	<!-- 将头部(_head.jsp)包含进来 -->
 	<jsp:include page="/WEB-INF/jsp/_head.jsp"/>
-		<div id="index">
+	<jsp:include page="/WEB-INF/jsp/daohang.jsp"/>
+		<!--<div id="index">
 			<div id="line1">
 				<img src="${ pageContext.request.contextPath }/img/index/banner_big.jpg"/>
 			</div>
@@ -44,7 +45,7 @@
 					<img src="${ pageContext.request.contextPath }/img/index/icon_g4.png"/>&nbsp;&nbsp;448家维修网点 全国联保 
 				</span>
 			</div>
-		</div>
+		</div>-->
 		<!-- 将头部(_foot.jsp)包含进来 -->
 	<jsp:include page="/WEB-INF/jsp/_foot.jsp"/>
 	+
