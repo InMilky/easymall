@@ -3,7 +3,7 @@ body{
 	margin:0px;
 	padding:0px;
 	font-family: "微软雅黑";
-	font-size: 12px;
+	font-size: 14px;
 	color:#666666;
 }
 
@@ -15,6 +15,9 @@ body{
 #content #search_div{
 	border: 1px solid #D4D4D4;
 	padding:8px;
+	font-size: 14px;
+	margin-left: 0;
+	text-align:left;
 }
 #content #search_div .input_span{
 	margin: 0px 0px 0px 15px;
@@ -27,17 +30,26 @@ body{
 	width:130px;
 }
 #content #search_div input[name=minprice],#content #search_div input[name=maxprice]{
-	width:60px;;
+	width:60px;
 }
-
+#category{
+	height:24px;
+	width:120px;;
+}
 #content #search_div input[type=submit]{
 	border-style:none;
-	width:58px;
+	width:60px;
 	height:28px;
 	cursor: pointer;
 	color:#fff;
 	background-image: url("../img/prodlist/search_03.jpg");	
-	margin-left:5px;
+	backgroung-repeat:no-repeat;
+	background-position: center top;
+	background-size:contain;
+	text-align:center;
+	margin: 0px 0px 0px 20px;
+	font-size: 10px;
+	padding:0;
 }
 /*商品信息*/
 #prod_content{
@@ -66,9 +78,12 @@ body{
 	width:100%; 
 }
 #prod_content #prod_name_div{
-	font-size:12px;
+	font-size:14px;
 	margin-top:8px;
 	text-align: center;
+}
+#prod_content #prod_name_div a{
+	text-decoration: none;
 }
 #prod_content #prod_price_div{
 	font-size:22px;
@@ -85,13 +100,16 @@ body{
 	text-align: center;
 	line-height:32px;
 	border-top: 1px solid #D4D4D4;
+	border-left: 1px solid #D4D4D4;
 }
 #gotocart_div a{
 	display: block;
-	width:110px;
+	width:111px;
 	height:32px;
-	color:#666666;
+	color:white;
+	font-size:12px;
 	text-decoration: none;
+	background-color:#CC0000;
 }
 #gotocart_div a:hover{
 	background-color: #FF0000;
@@ -104,8 +122,8 @@ body{
 	height:32px;
 	margin-top:15px;
 	text-align: center;
+	font-size:12px;
 	line-height:32px;
-	border-left: 1px solid #D4D4D4;
 	border-top: 1px solid #D4D4D4;
 }
 

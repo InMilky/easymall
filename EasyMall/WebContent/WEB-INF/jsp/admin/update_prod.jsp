@@ -16,7 +16,6 @@
 			<th>操作</th>
 		</tr>
 		
-		<!-- 模版数据 -->
 		<c:forEach items="${products}" var="products">
 		<tr>
 			<td>

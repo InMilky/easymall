@@ -13,80 +13,80 @@
 </head>
 <body>
 <%@ include file = "_head.jsp" %>
-	<div id="no_order_info">
+	<p>BEAUTYMALL > ORDERS</p>
+	
 	<c:if test="${empty orderInfos }">
-		<h2>您还没有添加任何订单！！</h2>
-	</c:if>
+	<div id="no_order_info">
+		<h2>There are no orders on your account.</h2>
 	</div>
+	</c:if>
+	
 	<!-- 模版数据 -start -->
 	<c:forEach items="${orderInfos }" var="orderInfo">
-	<div style="margin: 0 auto;width:999px;">
+	<div class="orderinfos_div">
 		<dl class="Order_information">
-			<dt>
-				<h3>订单信息</h3>
-			</dt>
-			<dd style="line-height: 26px;">
-				订单编号：${orderInfo.order.id }
+			<dt><h3>ORDERINFOS</h3></dt>
+			<dd>
+				Order_ID：${orderInfo.order.id }
 				<br />
-				下单时间：${orderInfo.order.ordertime }
+				Order_Time：${orderInfo.order.ordertime }
 				<br /> 
-				订单金额：${orderInfo.order.money }
+				Order_Amount：￥${orderInfo.order.money }
 				<br /> 
-				支付状态：
+				Payment_State：
 				<c:if test="${orderInfo.order.paystate == 0 }">
-					<font color="red">未支付</font>&nbsp;&nbsp;
-					<a href="${ pageContext.request.contextPath }/order/delorder?id=${orderInfo.order.id}">
-						<img src="${ pageContext.request.contextPath }/img/orderList/sc.jpg" width="69" height="19"/>
+					<font color="red">non-payment</font>&nbsp;&nbsp;
+					<a href="${ pageContext.request.contextPath }/order/delorder?id=${orderInfo.order.id}" style="text-decoration: none;"}> 
+					 	<img src="${ pageContext.request.contextPath }/img/orderList/del.png" alt="delorder">
 					</a>
-					&nbsp;
-				 	<a href="${ pageContext.request.contextPath }/order/payorder?id=${orderInfo.order.id}"> 
-					 	<img src="${ pageContext.request.contextPath }/img/orderList/zx.jpg" width="69" height="19">
+					-
+				 	<a href="${ pageContext.request.contextPath }/order/payorder?id=${orderInfo.order.id}" style="text-decoration: none;"> 
+					 	<img src="${ pageContext.request.contextPath }/img/orderList/pay.png" alt="OnlinePayment">
 					</a>
 				</c:if>
 				<c:if test="${orderInfo.order.paystate == 1 }">
-					<font color="blue">已支付</font>&nbsp;&nbsp;
-					<a href="#" onclick="cuicu()"> 催发货 </a>
+					<font color="blue">Paid</font>&nbsp;&nbsp;
+					<a href="#" onclick="cuicu()"> Pressing for Order </a>
 				</c:if>
 				<c:if test="${orderInfo.order.paystate == 2 }">
-					<font color="blue">已发货</font>&nbsp;&nbsp;
+					<font color="blue">Delivered</font>&nbsp;&nbsp;
 					<a href="${ pageContext.request.contextPath }/order/confirmorder?id=${orderInfo.order.id}"> 
-					 	确认收货
+					 	Comfirm Receipt
 					</a>
 				</c:if>
 				<c:if test="${orderInfo.order.paystate == 3 }">
-					<font color="blue">已收货</font>&nbsp;&nbsp;
+					<font color="blue">Received</font>&nbsp;&nbsp;
 				</c:if>
 				<br /> 
-				所属用户：${user.username }
+				Username：${user.username }
 				<br/> 
-				收货地址：${orderInfo.order.receiverinfo }
+				Shipping_addr：${orderInfo.order.receiverinfo }
 				<br/> 
-				支付方式：在线支付
+				Payment：online
 			</dd>
 		</dl>
 	
-		<table width="999" border="0" cellpadding="0"
-			cellspacing="1" style="background:#d8d8d8;color:#333333">
+		<table width="1100" border="0" cellpadding="0" cellspacing="1">
 			<tr>
-				<th width="276" height="30" align="center" valign="middle" bgcolor="#f3f3f3">商品图片</th>
-				<th width="247" align="center" valign="middle" bgcolor="#f3f3f3">商品名称</th>
-				<th width="231" align="center" valign="middle" bgcolor="#f3f3f3">商品单价</th>
-				<th width="214" align="center" valign="middle" bgcolor="#f3f3f3">购买数量</th>
-				<th width="232" align="center" valign="middle" bgcolor="#f3f3f3">总价</th>
+				<th width="256" height="30" align="center" valign="middle" bgcolor="#f3f3f3">PICTURE</th>
+				<th width="220" align="center" valign="middle" bgcolor="#f3f3f3">NAME</th>
+				<th width="210" align="center" valign="middle" bgcolor="#f3f3f3">PRICE</th>
+				<th width="198" align="center" valign="middle" bgcolor="#f3f3f3">QUANTITY</th>
+				<th width="212" align="center" valign="middle" bgcolor="#f3f3f3">TOTAL</th>
 			</tr>
 			<c:forEach items="${orderInfo.map }" var="entry">
 			<tr>
 				<td align="center" valign="middle" bgcolor="#FFFFFF">
-					<img src="${pageContext.request.contextPath }${entry.key.imgurl }" width="90" height="105">
+					<img src="${pageContext.request.contextPath }${entry.key.imgurl }" width="108" height="106">
 				</td>
 				<td align="center" valign="middle" bgcolor="#FFFFFF">${entry.key.name }</td>
-				<td align="center" valign="middle" bgcolor="#FFFFFF">${entry.key.price }元</td>
-				<td align="center" valign="middle" bgcolor="#FFFFFF">${entry.value }件</td>
-				<td align="center" valign="middle" bgcolor="#FFFFFF">${entry.key.price*entry.value }元</td>
+				<td align="center" valign="middle" bgcolor="#FFFFFF">￥${entry.key.price }</td>
+				<td align="center" valign="middle" bgcolor="#FFFFFF">${entry.value }</td>
+				<td align="center" valign="middle" bgcolor="#FFFFFF">￥${entry.key.price*entry.value }</td>
 			</tr>
 			</c:forEach>
 		</table>
-		<div class="Order_price">${orderInfo.order.money }元</div>
+		<div class="Order_price">￥${orderInfo.order.money }</div>
 	</div>
 	</c:forEach>
 	<!-- 模版数据 -end -->

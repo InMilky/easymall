@@ -9,22 +9,22 @@
 <body>
 	<%@ include file = "_head.jsp" %>
 	<div class="warp">
+		<p id="daohangtiao">BEAUTYMALL > SHOPPING CART > PAYMENT</p>
 		<form action="${ pageContext.request.contextPath }/order/addOrder" name="form1" method="post">
-			<h3>增加订单</h3>
 			<div id="forminfo">
-				<span class="lf" style="vertical-align: middle;">收货地址：</span> 
+				<p> PAYMENT：<input name="" type="radio" value="1" checked>&nbsp;online payment
+				  	   <input type="hidden" name="cartIds" value="${cartIds }"></p>
+				<span class="lf">ADDRESS：</span> 
 				<label for="textarea"></label>
-				<textarea name="receiverinfo" id="textarea" cols="35" rows="3">广东省佛山市南海区狮山镇狮山大学城华南师范大学南海校区</textarea>
-				<br> 支付方式：<input name="" type="radio" value="1" checked>&nbsp;在线支付
-				  	   <input type="hidden" name="cartIds" value="${cartIds }">
+				<textarea name="receiverinfo" id="textarea" cols="56" rows="2" style="resize:none">广东省佛山市南海区狮山镇狮山大学城华南师范大学南海校区</textarea>
 			</div>
-			<table width="999" height="80" border="1" cellpadding="0" cellspacing="0" bordercolor="#d8d8d8">
+			<table cellpadding="0" cellspacing="0">
 				<tr>
-					<th width="276">商品图片</th>
-					<th width="247">商品名称</th>
-					<th width="231">商品单价</th>
-					<th width="214">购买数量</th>
-					<th width="232">总价</th>
+					<th width="276">PICTURE</th>
+					<th width="247">ITEM</th>
+					<th width="231">PRICE</th>
+					<th width="214">QUANTITY</th>
+					<th width="232">TOTAL</th>
 				</tr>
 				<c:set var="sum" value="0"/>
 				<c:forEach items="${carts }" var="cart">
@@ -32,21 +32,22 @@
 					<td><img src="${ pageContext.request.contextPath }${cart.imgurl}" 
 					width="90" height="90" class="prodimg" /></td>
 					<td>${cart.name}</td>
-					<td>${cart.price}元</td>
-					<td>${cart.num}件</td>
-					<td>${cart.price*cart.num}元</td>
+					<td>￥${cart.price}</td>
+					<td>${cart.num}</td>
+					<td>￥${cart.price*cart.num}</td>
 				</tr>
 				<c:set var="sum" value="${sum + cart.price*cart.num }"/>				
 				</c:forEach>
 			</table>
 
-			<div class="Order_price">总价：${sum }元</div>
+			<div class="Order_price">TOTAL：￥${sum }</div>
 
 			<div class="add_orderbox">
-				<input name="" type="submit" value="增加订单" class="add_order_but">
+				<input name="" type="submit" value="CHECKOUT" class="add_order_btn">
 			</div>
 		</form>
+		<div style="clear: both"></div>
 	</div>
-	<%@ include file = "_foot.jsp" %>
+	<%@ include file="_foot.jsp" %>
 </body>
 </html>

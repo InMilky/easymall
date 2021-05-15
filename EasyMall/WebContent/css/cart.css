@@ -1,7 +1,7 @@
 @charset "utf-8";
 body{
 	font-family: "微软雅黑";
-	font-size:14px;
+	font-size:16px;
 	color:#666666;
 }
 body, ul, li{
@@ -16,6 +16,7 @@ body, ul, li{
 	float:left;
 	width:200px;
 	text-align:center;
+    overflow:hidden;
 }
 #wrap ul#title{
 	width: 1200px;
@@ -30,23 +31,27 @@ body, ul, li{
     width: 1200px;
     height: 100px;
     line-height: 100px;
-	background-color: #FEF4E8;
     border-top: 1px solid #ABAAA8;
 }
-#wrap ul li:first-child{
-	text-align: left;
-	width:120px;
-	padding-left: 30px;
+#wrap ul.end{
+    margin: 10px auto 0;
+    width: 1200px;
+    border-top: 1px solid #ABAAA8;
+    overflow:hidden;
 }
-#wrap ul li:last-child{
-	width:120px;
-	padding-right: 30px;
+#wrap ul li:first-child{
+	text-align: center;
+	width:60px;
+	padding-left: 10px;
 }
 #wrap ul li.li_prod{
 	width:300px;
+	text-align: left;
+	padding-left: 10px;
 }
 #wrap ul.prods li.li_prod{
 	text-align: left;
+	padding-left: 10px;
 }
 
 #wrap ul li img.prodimg{
@@ -88,8 +93,7 @@ input.buyNumInp{
 }
 #total #total_1{
 	float:left;
-	/* width:1075px; */
-	width:1074px;
+	width:1060px;
 	height:45px;
 	line-height:45px;
 	border: 1px solid #CCC;
@@ -101,7 +105,7 @@ input.buyNumInp{
 	margin-left:30px;
 }
 #total #total_1 #del_a{
-	margin-left: 15px;
+	margin-left: 2px;
 	text-decoration: none;
 	color:#666;
 }
@@ -122,7 +126,7 @@ input.buyNumInp{
 }
 #total #total_2 a{
 	float:right;
-	width:123px;
+	width:136px;
 	height:47px;
 	line-height:47px;
 	text-align: center;
@@ -130,7 +134,7 @@ input.buyNumInp{
 	background-color: #D9141E;
 	color: #FFF;
 	font-weight:bold;
-	font-size:24px;
+	font-size:20px;
 }
 #total #total_2 a:hover{
 	background-color: #DD4343;

@@ -46,7 +46,7 @@
 				</span>
 			</div>
 		</div>-->
-		<!-- 将头部(_foot.jsp)包含进来 -->
+		<!-- 将底部(_foot.jsp)包含进来 -->
 	<jsp:include page="/WEB-INF/jsp/_foot.jsp"/>
 	+
 	</body>

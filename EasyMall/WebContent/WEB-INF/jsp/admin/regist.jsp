@@ -56,10 +56,10 @@
 					var res2=this.checkNull("password", "密码不能为空！");
 					var res3=this.checkNull("password2", "确认密码不能为空！");
 					var res5=this.checkNull("email", "邮箱不能为空！");
-					var res6=this.checkNull("valistr", "验证码不能为空！");
+					//var res6=this.checkNull("valistr", "验证码不能为空！");  return +&& res6
 					var res7=this.checkPassword("password","两次密码输入不一致");
 					var res8=this.checkEmail("email","邮箱格式不正确！");
-					return res1 && res2 && res3 && res4 && res5 && res6 && res7 && res8;				
+					return res1 && res2 && res3 && res4 && res5 && res7 && res8;				
 				},
 				"checkNull":function(name,msg){
 					var value=$("input[name='"+name+"']").val();  
@@ -151,7 +151,7 @@
 						<span></span>
 					</td>
 				</tr>
-				<tr>
+				<!-- <tr>   因为软件测试需要，暂时去掉验证码部分
 					<td class="tds">验证码：</td>
 					<td>
 						<input  type="text" name="valistr" value=""/>
@@ -159,7 +159,7 @@
 						<img id="img"  src="${ pageContext.request.contextPath }/index/valiImage"/>
 						<span></span>
 					</td>
-				</tr>
+				</tr> -->
 				<tr>
 					<td class="sub_td" colspan="2" class="tds">
 						<input type="submit" value="注册账号"/>

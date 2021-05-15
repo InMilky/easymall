@@ -50,6 +50,7 @@
 </head>
 <body>
 	<%@ include file="_head.jsp" %>
+	<h2 style="margin:20px 0; text-align:center">DETAILS</h2>
 	<div id="warp">
 		<div id="left">
 			<div id="left_top"><!-- ${pageContext.request.contextPath}${product.imgurl } -->
@@ -70,12 +71,11 @@
 			</div>
 			<div id="right_middle">
 				<span id="right_middle_span">
-					EasyMall 价：
+					Price：
 				<span class="price_red">￥${product.price }</span>
 				<br/>
-			    运&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;费：满 100 免运费<br />
-			    服&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;务：由EasyMall负责发货，并提供售后服务<br />
-			    购买数量：
+			 FREE Shipping<br />
+			  Quantity：
 	            <a href="javascript:void(0)" id="delNum" onclick="">-</a>
 	            <input type="text" id="buyNumInp" name="buyNum" value="1">
 		        <a href="javascript:void(0)" id="addNum" onclick="">+</a>

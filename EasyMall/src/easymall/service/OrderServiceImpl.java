@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService{
 			orderItem.setProduct_id(pid);
 			orderItem.setBuynum(buynum);
 			orderItemDao.addOrderItem(orderItem);
-			cartDao.delCart(cid);
+			//cartDao.delCart(cid);
 		}
 		myOrder.setMoney(sum);
 		orderDao.addOrder(myOrder);

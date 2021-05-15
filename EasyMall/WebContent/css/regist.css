@@ -1,19 +1,21 @@
 ﻿@charset "utf-8";
 body{
-	background-image: url("../img/regist/zc.jpg");
+	background-image: url("../img/regist/zc.png");
 	background-repeat: no-repeat;
 	background-position: center top;
 	font-family: "微软雅黑";
+	font-size: 14px;
 }
 form{
 	width: 450px;
 	margin: 0 auto;
 }
 h1{
-	width: 300px;/* */
+	width: 260px;/* */
 	color: #990000;
-	margin: 190px auto 3px;
+	margin: 180px auto 10px;
 	text-align: center;
+	font-size: 24px;
 }
 
 table{
@@ -24,7 +26,7 @@ td{
 	padding-top: 10px;
 }
 .tds{
-	font-size: 18px;
+	font-size: 14px;
 	text-align: right;
 }
 
@@ -48,27 +50,40 @@ img{
 
 input[type='submit']{
 	border: none;
-	width:127px;
-	height: 44px;
-	font-size: 20px;
+	width:120px;
+	height: 40px;
+	margin-top: 10px;
+	font-size: 18px;
 	color: #FFFFFF;
-	font-weight: bolder;
+	font-weight: bold;
 	background-image: url('../img/regist/zc_btn01.jpg');
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size:contain;
 }
 
 input[type='submit']:hover{
 	background-image: url('../img/regist/zc_btn02.jpg');
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size:contain;
 }
 input[type='button']{
 	border: none;
-	width:127px;
-	height: 44px;
-	font-size: 20px;
+	width:120px;
+	height: 40px;
+	font-size: 18px;
 	color: #FFFFFF;
-	font-weight: bolder;
+	font-weight: bold;
 	background-image: url('../img/regist/zc_btn01.jpg');
+	background-size:contain;
+	background-repeat: no-repeat;
+	background-position: center top;
 }
 
 input[type='button']:hover{
 	background-image: url('../img/regist/zc_btn02.jpg');
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size:contain;
 }

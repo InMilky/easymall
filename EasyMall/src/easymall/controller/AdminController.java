@@ -78,10 +78,10 @@ public class AdminController {
 			model.addAttribute("msg", "密码不能为空!");
 			return "admin/regist";
 		}
-		if(!valistr.equalsIgnoreCase(session.getAttribute("code").toString())){
-			model.addAttribute("msg", "验证码不能为空");
-			return "admin/regist";
-		}
+//		if(!valistr.equalsIgnoreCase(session.getAttribute("code").toString())){
+//			model.addAttribute("msg", "验证码不能为空");
+//			return "admin/regist";
+//		}
 
 		if(adminService.adminRegist(admin) > 0 ){
 			model.addAttribute("msg", "注册成功!");

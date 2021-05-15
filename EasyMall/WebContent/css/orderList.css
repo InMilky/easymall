@@ -7,45 +7,65 @@ ul li{list-style:none;}
 .clear{clear:both;}
 .lf{float:left;}
 .rt{float:right;}
+p{
+	margin:18px 88px;
+}
 /*---¶©µ¥ÁÐ±í----------------------------------------------------------------------*/
+
+.orderinfos_div{
+	margin: 36px auto;
+	width:1100px;
+}
+.orderinfos_div:first-child{
+	margin-top: 0;
+}
+
 .Order_information{
 	text-align:left;
-	width:999px;
-	margin-bottom:16px;
+	width:1100px;
+	margin-bottom:20px;
 }
 .Order_information dt{
 	background:#f3f3f3;
 	height:32px;
 	margin:22px 0px 12px 0px;
+	padding-left:16px;
 }
 .Order_information dt h3{
-	font-size:15px;
+	font-size:16px;
 	text-indent:18px;
 	line-height:32px;
 }
 .Order_information dd{
 	font-size:15px;
-	line-height:18px;
-	padding-left:18px;
 	color:#333333;
+	padding-left:34px;
+	line-height: 24px;
 }
 .Order_information dd img{ 
 	vertical-align:middle;
 	border:none;
+	width:70px;
+	height:20px;
+}
+table{
+	background:#d8d8d8;
+	color:#333333";
+	margin:24px auto;
 }
 .Order_price{
-	width:999px;
+	width:1100px;
 	text-align:right;
-	color:#F00;
-	font-size:35px;
-	margin:5px 0px 18px;
+	color:#CA141D;
+	font-size:32px;
+	margin:10px auto 21px;
+	psdding-bottom:10px;
 	font-weight:bold;
 	border-bottom: 1px solid #CCC;
-	
 }
 #no_order_info{
 	font-size:30px;
 	color:#CA141D;
 	text-align:center;
-	margin: 50px 0px;
+	margin: 50px auto;
 }

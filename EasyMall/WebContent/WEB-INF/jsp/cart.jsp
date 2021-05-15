@@ -34,27 +34,18 @@
 				"buyNum" : newBuyNum
 			});
 
-			//3.重新计算总金额(包括当前商品的总价和所有商品总价的和)
-			totalMoney(this, newBuyNum);
+			//3.重新计算该商品总金额
+			singleProdsMoney(this, newBuyNum);
+			TotalMoney();
 		});
 
-		/* 重新计算总金额 */
-		function totalMoney(thisobj, newBuyNum) {
+		/* 重新计算该商品总金额 */
+		function singleProdsMoney(thisobj, newBuyNum) {
 			//1.获取当前商品的单价
 			var price = $(thisobj).parents("ul").find(".li_price").text();
-
 			//2.计算当前商品的总价
 			var prod_sum = price * newBuyNum;
 			$(thisobj).parents("ul").find(".sum_price").text(prod_sum);
-
-			//4.计算购物车所有商品的总价
-			var totalMoney = 0;
-			$(".sum_price").each(function() {
-				totalMoney += parseFloat($(this).text());
-			});
-
-			//设置所有商品的总价
-			$("#span_2").text(totalMoney);
 		}
 
 		/* 为"加号"绑定点击事件, 点击"加号"将购买数量输入框中的值加1
@@ -79,15 +70,36 @@
 				"buyNum" : newBuyNum
 			});
 
-			//3.重新计算总金额(包括当前商品的总价和所有商品总价的和)
-			totalMoney(this, newBuyNum);
+			//3.重新计算该商品总金额
+			singleProdsMoney(this, newBuyNum);
+			TotalMoney();
 		});
 
-		/* 设置全选和全不选 */
+		/* 设置全选和全不选    attr和prop用法一致，但attr在1.6以后不支持*/
 		$(".allC").click(function() {
 			$(".prodC").attr("checked", $(this).attr("checked"));
+			$(".allC").attr("checked", $(this).attr("checked"));
+			TotalMoney();
 		});
-		
+		/*复选框的交互
+		 * 即某个商品按钮取消选择时，全选按钮失去作用
+		 * 当前所有商品按钮选择后，全选按钮自动选上
+		 */
+        $(".prodC").click(function () {
+            let n1= $(".prodC").length;
+            let n2= $(".prodC:checked").length;
+            $(".allC").attr("checked",n1==n2)
+            TotalMoney();
+        });
+        function TotalMoney(thisobj, newBuyNum) {
+        	var sum=0;
+        	//1.获取每个选中商品的总价
+			$(".prodC:checked").each(function(){
+				sum = sum + parseFloat($(this).parents("ul").find(".sum_price").text());
+			});
+			$("#span_2").text();
+			$("#span_2").text(sum);
+		}
 		/*
 		删除所有选中的商品
 		*/
@@ -101,13 +113,8 @@
 					$(this).parents("ul").remove();
 				}
 			});
-			//2.重新计算购物车中商品的总价
-			var totalMoney = 0;
-			$(".sum_price").each(function(){
-						totalMoney += parseFloat($(this).text());
-			});
-			//3.设置所有商品的总价
-			$("#span_2").text(totalMoney);
+			
+			TotalMoney();
 		});
 		
 		/* 删除当前商品 
@@ -125,12 +132,7 @@
 			$(this).parents("ul").remove();
 					
 			//4.重新计算购物车中商品的总价
-			var totalMoney = 0;
-			$(".sum_price").each(function(){
-						totalMoney += parseFloat($(this).text());
-			});				
-			//设置所有商品的总价
-			$("#span_2").text(totalMoney);
+			TotalMoney();
 			
 		});		
 		/* 去结算 */
@@ -160,17 +162,16 @@
 			<ul id="title">
 				<li>
 					<input class="allC" name="allC" type="checkbox"/>
-					<span id="title_checkall_text">全选</span>
 				</li>
-				<li class="li_prod">商品</li>
-				<li>单价（元）</li>
-				<li>数量</li>
-				<li>小计（元）</li>
-				<li>操作</li>
+				<li class="li_prod">ITEM</li>
+				<li>PRICE</li>
+				<li>QUANTITY</li>
+				<li>SUBTOTAL</li>
+				<li>ACTION</li>
 			</ul>
 
 			<!-- 购物信息 -->
-			<c:set var="sum" value="0" />
+			<!--<c:set var="sum" value="0" />-->
 			<c:forEach items="${carts}" var="cart">
 			<ul class="prods">
 				<li>
@@ -189,9 +190,9 @@
 					<a href="javascript:void(0)" class="addNum">+</a>
 				</li>
 				<li class="sum_price">${cart.price*cart.num}</li>
-				<li><a id="${cart.cartID }" class="delProd" href="javascript:void(0)">删除</a></li>
+				<li><a id="${cart.cartID }" class="delProd" href="javascript:void(0)">remove</a></li>
 			</ul>
-			<c:set var="sum" value="${sum + cart.price*cart.num}"/>
+			<!--<c:set var="sum" value="${sum + cart.price*cart.num}"/>-->
 			</c:forEach>
 			
 			
@@ -199,18 +200,18 @@
 			<div id="total">
 				<div id="total_1">
 					<input type="checkbox" class="allC" name="allC"/>
-					<span>全选</span>
-					<a id="del_a" class="del_all" href="javascript:void(0)">删除选中的商品</a>
+					<a id="del_a" class="del_all" href="javascript:void(0)">Remove Selected</a>
 					<div id="div_sum">
-						<span id="span_1">总价: </span>
+						<span id="span_1">TOTAL : </span>
 						<span>￥</span>
-						<span id="span_2" class="total_sum_price">${sum }</span>&nbsp;&nbsp;
+						<span id="span_2" class="total_sum_price">0</span>&nbsp;&nbsp;
 					</div>
 				</div>
 				<div id="total_2">
-				<a class="goto_order" href="javascript:void(0)">去结算</a>
+				<a class="goto_order" href="javascript:void(0)">CHECKOUT</a>
 				</div>
 			</div>
+			<div style="clear: both"></div>
 		</div>
 	<%@ include file="_foot.jsp" %>
 	</body>

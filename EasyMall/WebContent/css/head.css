@@ -6,7 +6,7 @@ body{
 	margin:0px;
 	padding:0px;
 	font-family: "微软雅黑";
-	font-size: 12px;
+	font-size: 16px;
 	color:#666666;
 }
 #common_head{
@@ -55,7 +55,7 @@ body{
 	border: 2px solid #CA141D;
 }
 #common_head #line2 input[type='submit']{
-	width:70px;
+	width:100px;
 	height:36px;
 	background-color: #CA141D;
 	border: 1px solid #CA141D;
@@ -104,10 +104,11 @@ body{
 #common_head #line3 #content ul{
 	padding:0px;
 	margin:0px;
+	width:100%;
 }
 #common_head #line3 #content li{
 	list-style-type:none;
-	width:120px;
+	width:12%;
 	float:left;
 	padding:0px;
 	margin:0px;

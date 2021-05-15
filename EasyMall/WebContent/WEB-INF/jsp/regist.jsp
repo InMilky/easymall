@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>欢迎注册EasyMall</title>
+		<title>欢迎注册BeautyMall</title>
 		<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" href="${ pageContext.request.contextPath }/css/regist.css"/>
 		<script  type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-1.4.2.js"></script>
@@ -11,11 +11,11 @@
 			//浏览器只要发现图片的src地址变化，图片就会变化。
 			$(function(){
 
-				var yanzhengma = null;	//记录验证码
+				<!--var yanzhengma = null;	//记录验证码
 
 				$("#img").click(function(){
 					$(this).attr("src","${ pageContext.request.contextPath }/index/valiImage?time="+new Date().getTime());
-				});
+				});	-->
 				
 				//给所有输入框添加失去输入焦点的事件  当失去输入焦点时检查输入是否为空或者两次密码是否一致，或者邮箱格式是否正确。
 				$("input[name='username']").blur(function(){
@@ -46,12 +46,12 @@
 					formobj.checkNull("email", "邮箱不能为空！");
 					formobj.checkEmail("email", "邮箱格式不正确！");
 				});
-				$("input[name='valistr']").blur(function(){
+				<!--$("input[name='valistr']").blur(function(){
 					formobj.checkNull("valistr", "验证码不正确！");
 				});
 				$("input[name='yanzhengma']").blur(function(){
 					formobj.checkNull("yanzhengma","错误");
-				});
+				});-->
 			});
 			
 			/*注册表单的js校验*/
@@ -64,13 +64,13 @@
 					var res3=this.checkNull("password2", "确认密码不能为空！");
 					var res4=this.checkNull("nickname", "昵称不能为空！");
 					var res5=this.checkNull("email", "邮箱不能为空！");
-					var res6=this.checkNull("valistr", "验证码不能为空！");
+					//<!-- var res6=this.checkNull("valistr", "验证码不能为空！");   && res6 -->
 					var res7=this.checkPassword("password","两次密码输入不一致");
 					var res8=this.checkEmail("email","邮箱格式不正确！");
 					
 					//2.验证码校验
-					var res9=this.checkYanzhengma(yanzhengma);
-					return res1 && res2 && res3 && res4 && res5 && res6 && res7 && res8 && res9;				
+					//<!--var res9=this.checkYanzhengma(yanzhengma);	 && res9-->
+					return res1 && res2 && res3 && res4 && res5 && res7 && res8;				
 				},
 				"checkNull":function(name,msg){
 					var value=$("input[name='"+name+"']").val();  
@@ -117,21 +117,21 @@
 				},
 				
 				//4.邮箱验证码校验
-				"checkYanzhengma":function(yzm){
-					var fyzm = $("input[name=yanzhengma]").val().trim();
-					if(yzm==fyzm){
-						this.setMsg("yanzhengma","正确");
-						return true;
-					}else{
-						this.setMsg("yanzhengma","错误");
-						return false;
-					}
-				}
+				//"checkYanzhengma":function(yzm){
+					//var fyzm = $("input[name=yanzhengma]").val().trim();
+					//if(yzm==fyzm){
+						//this.setMsg("yanzhengma","正确");
+						//return true;
+					//}else{
+						//this.setMsg("yanzhengma","错误");
+						//return false;
+					//}
+				//}
 				
 				
 			};
 			
-			function getYanzhengma() {
+			<!--function getYanzhengma() {
 				if(formobj.checkNull("email","邮箱不能为空！")&&formobj.checkEmail("email","邮箱格式不正确！")){
 					alert("验证码已发送至邮箱！");
 					$.ajax({
@@ -146,7 +146,8 @@
 					})
 				}
 
-			}
+			}   -->
+			
 		</script>
 	</head>
 	<body>
@@ -156,14 +157,14 @@
 	     onsubmit="" 引号中报错并不是因为代码有问题，而是MyEclipse工具在检查语法认为这个代码有问题。其实没有错误     
 	-->
 		<form onsubmit="return formobj.checkForm();" action="${ pageContext.request.contextPath }/user/regist" method="POST">
-			<h1>欢迎注册EasyMall</h1>
+			<h1>SIGN IN BEAUTYMALL</h1>
 			<table>
 				<tr>
 					<td colspan="2" style="color:red;text-align:center;"></span>${ msg }</td>
 				</tr>
 			
 				<tr>
-					<td class="tds">用户名：</td>
+					<td class="tds">USERNAME：</td>
 					<td>
 						<input type="text" name="username" value="${ param.username }"/>
 						<span id="username_msg"></span>
@@ -171,34 +172,35 @@
 					
 				</tr>
 				<tr>
-					<td class="tds">密码：</td>
+					<td class="tds">PASSWORD：</td>
 					<td>
 						<input type="password" name="password"  value="${ param.password }"/>
 						<span></span>
 					</td>
 				</tr>
 				<tr>
-					<td class="tds">确认密码：</td>
+					<td class="tds">REPASSWORD：</td>
 					<td>
 						<input type="password" name="password2" value="${ param.password2 }"/>
 						<span></span>
 					</td>
 				</tr>
 				<tr>
-					<td class="tds">昵称：</td>
+					<td class="tds">NICKNAME：</td>
 					<td>
 						<input type="text" name="nickname"  value="${ param.nickname }"/>
 						<span></span>
 					</td>
 				</tr>
 				<tr>
-					<td class="tds">邮箱：</td>
+					<td class="tds">EMAIL：</td>
 					<td>
 						<input type="text" name="email" value="${ param.email }"/>
 						<span></span>
 					</td>
 					<!-- 邮箱验证 -->
 				</tr>
+				<!-- 邮箱验证
 				<tr>
 					<td class="tds">邮箱验证码：</td>
 					<td>
@@ -215,15 +217,15 @@
 						<img id="img"  src="${ pageContext.request.contextPath }/index/valiImage"/>
 						<span></span>
 					</td>
-				</tr>
+				</tr> -->
 				<tr>
 					<td class="sub_td" colspan="2" class="tds">
-						<input type="submit" value="注册用户"/>
+						<input type="submit" value="SIGN IN"/>
 					</td>
 				</tr>
 				<tr>
 					<td class="sub_td" colspan="2" class="tds">
-						<input class="btn" type="button" onclick="javascript:window.location.href='${ pageContext.request.contextPath }/index/login'" value="前往登录"/>
+						<input class="btn" type="button" onclick="javascript:window.location.href='${ pageContext.request.contextPath }/index/login'" value="LOGIN"/>
 					</td>
 				</tr>
 			</table>

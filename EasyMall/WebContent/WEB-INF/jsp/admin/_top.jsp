@@ -14,7 +14,7 @@
 		</div>	
 	</div>
 	<div id="line2">
-		<img id="logo" src="${ pageContext.request.contextPath }/img/head/logo.jpg"/>
+		<img id="logo" src="${ pageContext.request.contextPath }/img/head/logo.jpg" alt="adminlogo"/>
 		<span>EasyMall后台主页</span>
 	</div>
 	<div id="line3">

@@ -1,18 +1,18 @@
 ﻿body{
-	background-image: url("../img/login/dl.jpg");
+	background-image: url("../img/login/dl.png");
 	background-position: top;
 	font-family: "微软雅黑";
 }
 h1{
-	width:300px;
-	margin:210px auto 0px;
+	width:280px;
+	margin:192px auto 10px;
 	text-align: center;
 	color:#990000;
-	font-size:27px;
+	font-size:24px;
 }
 form{
 	width:400px;
-	margin:25px auto 0px;
+	margin:20px auto 0px;
 }
 
 form input[type='text'],form input[type='password']{
@@ -29,21 +29,33 @@ td{
 	padding-top:10px;
 }
 .tdx{
+	font-size: 14px;
 	text-align: right;
 }
+.tds, .tds a{
+	text-align: center;
+	font-size:12px;
+	text-decoration: none;
+}
+
 
 input[type='submit']{
 	background-image: url("../img/login/dlan01.jpg");
-	margin-top: 12px;
-	width:80px;
-	height:38px;
-	line-height:38px;
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size:contain;
+	width:88px;
+	height:40px;
+	line-height:40px;
 	border-style:none;
-	font-size:17px;
+	font-size:16px;
 	font-weight:bold;
 	color:white;
 	cursor: pointer;
 }
 input[type='submit']:hover{
 	background-image: url("../img/login/dlan02.jpg");
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size:contain;
 }
