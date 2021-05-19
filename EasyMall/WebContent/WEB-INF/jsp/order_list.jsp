@@ -7,13 +7,13 @@
 	<link href="${ pageContext.request.contextPath }/css/orderList.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript">
 		function cuicu() {
-			alert("已帮您催促商家，请您耐心等待");
+			alert("Your requestment has been received, please wait patiently");
 		}
 	</script>
 </head>
 <body>
 <%@ include file = "_head.jsp" %>
-	<p>BEAUTYMALL > ORDERS</p>
+	<p id="ptitle">BEAUTYMALL > ORDERS</p>
 	
 	<c:if test="${empty orderInfos }">
 	<div id="no_order_info">

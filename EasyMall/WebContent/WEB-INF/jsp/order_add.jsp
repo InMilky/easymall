@@ -12,7 +12,7 @@
 		<p id="daohangtiao">BEAUTYMALL > SHOPPING CART > PAYMENT</p>
 		<form action="${ pageContext.request.contextPath }/order/addOrder" name="form1" method="post">
 			<div id="forminfo">
-				<p> PAYMENT：<input name="" type="radio" value="1" checked>&nbsp;online payment
+				<p> PAYMENT：<input name="payment" type="radio" value="1" checked>&nbsp;online payment
 				  	   <input type="hidden" name="cartIds" value="${cartIds }"></p>
 				<span class="lf">ADDRESS：</span> 
 				<label for="textarea"></label>
@@ -43,7 +43,7 @@
 			<div class="Order_price">TOTAL：￥${sum }</div>
 
 			<div class="add_orderbox">
-				<input name="" type="submit" value="CHECKOUT" class="add_order_btn">
+				<input name="add_order_btn" type="submit" value="CHECKOUT" class="add_order_btn">
 			</div>
 		</form>
 		<div style="clear: both"></div>

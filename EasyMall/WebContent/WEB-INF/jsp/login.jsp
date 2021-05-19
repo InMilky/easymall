@@ -4,7 +4,7 @@
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css"/>
-		<title>BeautyMall欢迎您登录</title>
+		<title>Welcome to login BeautyMall</title>
 	</head>
 	<body>
 		<h1>LOGIN IN BEAUTYMALL</h1>

@@ -86,9 +86,9 @@
 		 * 当前所有商品按钮选择后，全选按钮自动选上
 		 */
         $(".prodC").click(function () {
-            let n1= $(".prodC").length;
-            let n2= $(".prodC:checked").length;
-            $(".allC").attr("checked",n1==n2)
+            var n1= $(".prodC").length;
+            var n2= $(".prodC:checked").length;
+            $(".allC").attr("checked",n1==n2);
             TotalMoney();
         });
         function TotalMoney(thisobj, newBuyNum) {
@@ -157,6 +157,7 @@
 	<body>
 	
 	<%@ include file="_head.jsp" %>
+		<p id="ptitle">BEAUTYMALL > SHOPPING CART</p>
 		<div id="wrap">
 			<!-- 标题信息 -->
 			<ul id="title">

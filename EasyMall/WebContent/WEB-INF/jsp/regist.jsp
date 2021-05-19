@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>欢迎注册BeautyMall</title>
+		<title>Welcome to sign in BeautyMall</title>
 		<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" href="${ pageContext.request.contextPath }/css/regist.css"/>
 		<script  type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-1.4.2.js"></script>

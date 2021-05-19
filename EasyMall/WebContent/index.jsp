@@ -4,7 +4,7 @@
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css"/>
-		<title>欢迎光临EasyMall</title>
+		<title>Welcome to BeautyMall</title>
 	</head>
 	<body>
 	<!-- 报错Tomcat问题未引入，Win-Perf-Server-Run Time-ADD- -->

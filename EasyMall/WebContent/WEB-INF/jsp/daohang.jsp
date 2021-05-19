@@ -30,8 +30,8 @@ body{height:100%;position:relative;top:0px;padding:0px}
 <!-- 创建地图容器元素，因为地图需要一个html元素作为容器，这样才能展现到页面上 -->
 <div id="container"></div>
 <div id='result'>
-        城市名: <input id="cityName" type="text"/>
-		<button onclick="theLocation()"/>查询</button>
+        City: <input id="cityName" type="text"/>
+		<button onclick="theLocation()"/>search</button>
 </div>
 <script type="text/javascript">
 var map = new BMap.Map("container"); //创建地图实例（在container容器中创建一个地图，此处的container为div的id属性，从上面的样式可知，container的height为100%）

@@ -9,12 +9,12 @@
 		  <c:if test="${ empty sessionScope.user }">
 		 	<a href="${ pageContext.request.contextPath }/index/login">LOGIN</a>&nbsp;	
 			 <a href="${ pageContext.request.contextPath }/index/regist">REGISTER</a>&nbsp;	
-			  <a href="${ pageContext.request.contextPath }/index/adminlogin">ADMINLOGIN</a>&nbsp; 	 
+			  <!-- <a href="${ pageContext.request.contextPath }/index/adminlogin">ADMINLOGIN</a>&nbsp; --> 	 
 		 </c:if>	
 		 <c:if test="${ !(empty sessionScope.user) }">
 		 	 	WELCOME,${ sessionScope.user.username }&nbsp;&nbsp; 
 		 	<a href="${ pageContext.request.contextPath }/index/logout">LOGOUT</a>&nbsp; 		 
-			<a href="${ pageContext.request.contextPath }/index/adminlogin">ADMINLOGIN</a>&nbsp; 
+			 <!-- <a href="${ pageContext.request.contextPath }/index/adminlogin">ADMINLOGIN</a>&nbsp; --> 
 		 </c:if>		
 		</div>	
 	</div>

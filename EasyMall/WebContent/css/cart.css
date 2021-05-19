@@ -8,6 +8,14 @@ body, ul, li{
 	padding: 0px;
 	margin: 0px;
 }
+p#ptitle{
+	width: 1200px;
+    margin: 20px auto;
+    padding-left:10px;
+    background-color: #F3F3F3;
+    line-height: 36px;
+    height: 36px;
+}
 #wrap ul, li{
 	list-style-type:none;
 }

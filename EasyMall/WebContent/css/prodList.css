@@ -39,13 +39,13 @@ body{
 #content #search_div input[type=submit]{
 	border-style:none;
 	width:60px;
-	height:28px;
+	height:29px;
 	cursor: pointer;
 	color:#fff;
 	background-image: url("../img/prodlist/search_03.jpg");	
 	backgroung-repeat:no-repeat;
 	background-position: center top;
-	background-size:contain;
+	background-size:cover;
 	text-align:center;
 	margin: 0px 0px 0px 20px;
 	font-size: 10px;
