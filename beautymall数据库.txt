@@ -1,0 +1,169 @@
+Drop DATABASE beautymall;
+CREATE DATABASE beautymall;
+
+USE beautymall;
+DROP TABLE IF EXISTS user;
+CREATE TABLE user (
+  id int(11) NOT NULL auto_increment,
+  username varchar(20) default NULL,
+  password varchar(40) default NULL,
+  nickname varchar(100) default NULL,
+  email varchar(60) default NULL,
+  PRIMARY KEY  (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+set names gbk;
+
+insert into user values(null, 'admin', '123', '超级管理员', 'admin@tedu.com');
+insert into user values(null,'sys', '123', '管理员', 'zhangfei@tedu.com');
+insert into user values(null, 'aa', '123', '顾客', 'aa@tedu.com');
+insert into user values(null, 'fqzhou', 'zfq', '顾客', 'fqzhou@163.com');
+insert into user values(null, 'xx', 'xx', '顾客', 'xx@163.com');
+
+select * from user;
+
+DROP TABLE IF EXISTS admin;
+CREATE TABLE admin(
+	username varchar(30)  NOT NULL,
+	password varchar(80) default NULL,
+	email varchar(60) default NULL,
+	PRIMARY KEY(username)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+delete from admin;
+insert into admin values('admin','123','admin@tedu.cn');
+insert into admin values('Adminstrator','admin','Adminstrator@m.edu.cn');
+insert into admin values('order','123','123@qq.com');
+
+select * from admin;
+
+DROP TABLE IF EXISTS category;
+
+CREATE TABLE category(
+  id int primary key auto_increment,
+  name varchar(255),
+  description varchar(255)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into category(name,description) values("CLOTHES","Clothes");
+insert into category(name,description) values("ORNAMENTS","Ornaments");
+insert into category(name,description) values("COSMETICS","Beauty Cosmetics");
+insert into category(name,description) values("SHOES","Shoes");
+insert into category(name,description) values("WATCHES","Watches");
+select * from category;
+
+DROP TABLE IF EXISTS products;
+CREATE TABLE products (
+  id varchar(100) NOT NULL ,
+  name varchar(255),
+  price double,
+  category int,
+  pnum int(11),
+  soldnum int(11),
+  imgurl varchar(255) ,
+  description varchar(255),
+  PRIMARY KEY  (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS cart;
+CREATE TABLE cart(
+	cartID INT primary key auto_increment,
+	user_id int,
+	pid char(100),
+	num int,
+	key pid(pid),
+	CONSTRAINT products_fk_1 FOREIGN KEY (pid) REFERENCES products(id)	
+)ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+/*Table structure for table orders */
+
+DROP TABLE IF EXISTS orders;
+CREATE TABLE orders (
+  id varchar(100) NOT NULL,
+  money double,
+  receiverinfo varchar(255) default NULL,
+  paystate int(11) default NULL,
+  ordertime timestamp NOT NULL ,
+  user_id int(11) default NULL,
+  PRIMARY KEY  (id),
+  KEY user_id (user_id),
+  CONSTRAINT orders_ibfk_1 FOREIGN KEY (user_id) REFERENCES user (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+Insert into orders values('a01',264,'华南师范大学南海校区',0,'2020-10-20',1);
+Insert into orders values('a02',13908,'佛山南海大学城',1,'2020-11-2',1);
+Insert into orders values('a03',56,'佛山市南海区狮山镇',2,'2020-11-11',2);
+Insert into orders values('a04',656,'广州大学城',0,'2020-12-12',2);
+Insert into orders values('a05',456,'深圳龙岗区龙岗街道',2,'2020-10-10',3);
+Insert into orders values('a06',198,'广州市新港东路44号',1,'2020-11-10',3);
+
+select * from orders;
+
+/*Table structure for table orderitem */
+
+DROP TABLE IF EXISTS orderitem;
+
+CREATE TABLE orderitem (
+  order_id varchar(100) NOT NULL default '',
+  product_id varchar(100) NOT NULL default '',
+  buynum int(11),
+  PRIMARY KEY  (order_id,product_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into orderitem values('a01','59622587-958e-43cb-b657-49619f60713e',3);
+insert into orderitem values('a02','ff838641-feb5-42a1-b061-042b9113a95c',2);
+insert into orderitem values('a02','bf45940e-ac72-454f-b67f-83dd288d11f9',1);
+insert into orderitem values('a03','38a4a0f0-7c33-4e78-aa9e-1a3f7f193683',1);
+insert into orderitem values('a04','d73ab7ed-9f78-4775-a93b-4d355b2d5fc0',1);
+insert into orderitem values('a04','a7184417-5aa2-4de0-8237-a4c0f53972a1',1);
+insert into orderitem values('a05','09f47493-214d-44bc-927d-6ce0bf89a057',1);
+insert into orderitem values('a05','09f47493-214d-44bc-927d-6ce0bf89a057',2);
+insert into orderitem values('a06','a0390f80-bed7-4a92-9954-5e22e64cbe17',2);
+
+select * from orderitem;
+
+delete from products;
+
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('c2652359-e9e0-4eda-8e0a-76s1f1wdc09','LONGINES','19800',5,'500',980,'/upload/e/c/b/b/9/5/5/3/efca4ee1-rt7f-4b12-a54c-8433d76a21bf8_1.png','女款手表');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('59622587-958e-43cb-b657-49619f60713e','Sunglasses','88',2,'1000',562,'/upload/6/5/a/4/2/9/e/8/cb68faa0-0033-4517-bff0-5fb2f1f1019a_671434fae6cd7b89a26ce25e072442a7d8330efa.png','渐变色太阳镜');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('6746c459-b284-4256-bbc6-1df60ba4a0a2','Nail Polish','68',3,'1000',1230,'/upload/f/3/2/4/a/2/7/8/07aa99e1-639f-457f-9f41-44cc27515033_301fb535-938a-4103-a2f5-f3f9af9ba9c6.jpg','指甲油');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('6c28bc1a-9c9b-4be3-b1cf-0068565e64e4','CHARLES&KEITH','259',2,'885',128,'/upload/1/f/b/5/3/4/e/4/61a8cdff-52f7-4fce-bdb5-570426022082_preview.png','Charles包包');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('79ec791240-3e76-4a3d-yt30-87vw554f022dc','Limelight','16899',5,'555',990,'/upload/d/1/7/d/3/5/7/a/d8533fcb-dc8f-9634-9bf2-76e798a0954_hescwe.png','伯爵女款手表');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('2ad0d041-8c5f-4b70-a0ef-1ca2fd476dba','Ulster','88',1,'200',280,'/upload/b/4/1/b/d/9/8/8/e41cd642-2fc2-4cb2-b20a-f8a78405eee2_e9dd0d91-40c1-4db5-a888-244e825e9ce4.png','长而宽松的外套');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('36b9407f-746a-4956-988e-557122bc74d0','Petticoat','58',1,'4999',189,'/upload/e/5/0/9/c/7/6/0/60746822-144c-4e98-8aaa-fca07e142a63_banana.png','衬裙');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('38a4a0f0-7c33-4e78-aa9e-1a3f7f193683','Bowler Hat','56',2,'180',200,'/upload/8/6/b/0/5/9/e/f/1d25320d-e1b2-42bc-b890-981d58391cf0_6f84843a-1d1e-49c7-b4ce-c035d7790171.png','女士硬礼帽');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('3da04a08-a570-4945-91b5-cd0d63ace7b4','Earrings','168',2,'100',199,'/upload/9/f/f/a/1/6/d/0/49617712-4018-4c0e-9e7a-5ebc4ff79ad1_6f84843a-1d1e-49c7-b4ce-c035d7790171.png','耳环');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('3f36ac54-5da0-4cd8-9991-2ee86cc348c2','Dior','188',2,'258',1530,'/upload/2/2/b/7/f/2/f/4/06402c91-aa25-45d5-b0c3-3ac276a7cd05_244c59c6-bf0a-451b-81e6-18f8bb257e5f.png','Dior 女款太阳镜');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('70ee3179-3e76-4a3d-bd30-55d740f022dc','High Heels','198',4,'555',99,'/upload/e/6/f/d/3/f/6/1/d2370fcb-dc8f-4405-9bf2-76e798a91567_Jellyfish.png','高跟鞋');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`,`soldnum`,`imgurl`, `description`) values('05e20c1a-0401-4c0a-82ab-6fb0f37db397','Trench Coat','900',1,'206',100,'/upload/5/e/d/5/4/5/e/b/5f0d34dc-157f-49ba-ad39-1b28927ba6ae_1005714.png','Trench Coat女士外套');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('09f47493-214d-44bc-927d-6ce0bf89a057','Overcoat','189',1,'185',108,'/upload/5/2/3/4/7/8/d/c/1838eaa6-6459-420f-b8e2-6ea9f43c4b5e_dfd259ab-bcc7-43f6-a9d5-62872ff5671e.png','女士长大衣');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('103e5414-0da2-4fba-b92f-0ba876e08939','Double-Breasted Coat','299',1,'676',189,'/upload/4/d/2/a/2/3/1/8/b3c3fc7a-222c-49be-9491-f466553d2284_386718.png','女士双排扣大衣');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('17c3f20e-ef86-4857-9293-f29e52954a95','Dust Coat','168',1,'123',100,'/upload/7/c/b/f/7/d/2/9/5e229aef-063f-4d0d-91df-2d4aa7167670_6f84843a-1d1e-49c7-b4ce-c035d7790171.png','女士大风衣');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('26128d47-423b-4220-8047-544ff899db50','Shirtdress','69',1,'986',99,'/upload/2/1/0/3/f/0/3/5/2fb0b43b-4dbe-440b-899b-13c02a9f5475_22d124c9-df52-4cd4-88b3-691005f1cafe.png','连衣裙');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('a0390f80-bed7-4a92-9954-3je345mds09fw','Beret','99',2,'1120',1220,'/upload/3/e/d/1/6/b/2/1/40ca42aa-34de-430a-9fa9-88d6156d7b18_c987f2c1-hevs-4d87-83bd-fe2fb221bwrdvc.png','贝雷帽');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('m2mof380-hat7-4a92-9954-3je345vse56btr','bucket hat','78',2,'1120',1220,'/upload/4/1/8/f/4/7/b/f/54wv6e3wd-34de-430a-9fa9-88d6156d7b18_c987f2c1-hevs-4d87-83bd-fe2fb221yufumao.png','渔夫帽');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('77feb539-a575-487b-8500-df38520f3239','Wrist Watch','789',5,'185',398,'/upload/5/e/e/6/c/4/9/b/67c1a752-9020-4372-bcda-3375ef01c878_preview.png','女款手表');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('a0390f80-bed7-4a92-9954-5e22e64cbe17','Ring','99',2,'112',122,'/upload/5/0/6/f/4/4/b/f/40ca42aa-8298-430a-9fa9-88d6156d7b18_c987f2c1-4123-4d87-83bd-fe2fb221e272.png','指戒');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('a08b13e9-c16a-4657-94ee-3b9bee2bd9c6','Skin Milk','89',3,'2000',10982,'/upload/4/a/d/8/8/c/4/0/236ac480-db3a-4e6b-bc7f-c379a30c2c2c_301fb535-938a-4103-a2f5-f3f9af9ba9c6.png','乳液');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('a7184417-5aa2-4de0-8237-a4c0f53972a1','CHANEL','590',3,'100',485,'/upload/3/6/c/0/7/2/1/3/741c8c70-cdd1-43a9-8cde-aa6a787129ca_738f47e2-9605-46aa-b647-fc8dca814074.png','香奈儿口红');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('b1f9c947-4f72-4245-b09d-8c5a8c311ae1','Hairpin','18',2,'199',1506,'/upload/6/5/5/c/5/4/1/9/d437c381-59af-49ee-80c6-2b01e0b06105_1017530.png','发夹');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('bf45940e-ac72-454f-b67f-83dd288d11f9','LV handbag','13800',2,'9921',845,'/upload/7/b/3/d/0/8/3/7/09af74da-0890-45c5-9517-380d2cc74f6a_lvbaobao.png','LV包包');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('632ome0sf-ac72-0654-b67f-83dd288d11f9','Hermes','31200',2,'1998',8450,'/upload/6/4/6/f/7/3/3/9/09af74da-dsfs-45c5-9517-380d2cc74f6a_Hermesbaobao.png','爱马仕女款包包');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('bf45940e-me4g-964g-b67f-83dd288d11f9','Bails Earring','100',2,'99',845,'/upload/1/4/2/e/7/3/6/4/09af74da-3829-45c5-9517-380d2cc74f6a_preview.png','珍珠耳环');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('c2952779-e9e0-4eda-8e0a-41a61f1afc66','Sandals','198',4,'50',98,'/upload/e/d/b/1/f/0/6/7/bcff4ee1-cc7f-4b30-a29c-017f76a21bf8_1.png','女式凉鞋');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('c2978733-5af8-473b-adbc-05073126164b','Sari-suit','298',1,'1189',8563,'/upload/3/5/5/4/c/3/a/b/943de853-0e1b-4d51-9524-991607024d3b_IMG_0928.png','夏装穿搭');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('c766ec19-4645-4e6b-9ddf-73a0f4aa5f6c','foundation','99',3,'189',560,'/upload/f/e/f/8/2/e/3/c/82c1698f-38a2-4340-9df7-83fadaefff4b_howardmouth.png','粉底液');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('d73ab7ed-9f78-4775-a93b-4d355b2d5fc0','Rouge-Blusher','66',3,'426',499,'/upload/c/8/1/0/4/6/3/b/28139e28-7390-45a7-82c8-03e673486e60_Desert.png','桃色腮红');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('d7f7cce4-b268-41a7-9429-21fa69b64159','Dior-Blusher','268',3,'1000',300,'/upload/1/8/e/9/b/2/7/2/95e01470-8e6f-40dc-a76b-087d804bb0cf_bae0a60a-521d-48ef-bea6-0854b89d7be0.png','Dior腮红');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('d8cb845e-37f6-4515-9fc1-dea07719ee06','LVCEA','62599',5,'100',870,'/upload/6/f/2/3/b/4/9/7/9fuj489234-vnn5-4e4f-94a1-21a9c0563778_mcoweihge.png','LVCEA手表');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('bf45940e-34as-nwe2-b67f-83dd288d11f9','Prada','21900',2,'2199',8245,'/upload/2/7/2/6/a/c/3/8/5574a70e-6fd4-44e8-9eae-4c73bc244944_c987f2c1-4123-4d87-83bd-fe2fb221e272.png','Prada女士包包');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('bf45940e-on42-842m-b67f-83dd288d11f9','Fendi','9810',2,'699',1845,'/upload/1/1/4/2/e/7/3/6/09af74da-8434-45c5-rcds-380d2cc74f6a_Fendibaobao.png','Fendi芬迪女士包包');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('ff838641-feb5-42a1-b061-042b9113a95c','Blush','27',3,'288',498,'/upload/c/e/4/f/6/2/9/e/a99e691b-88d4-43a2-ac12-82ec54db123d_738f47e2-9605-46aa-b647-fc8dca814074.png','化妆刷');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('vf3930489-bbt6-43di-j09s- 652hjt54gfer','Headset','287',2,'288',498,'/upload/b/6/0/7/e/4/8/3/b65dh2u5-88d4-ac12-82ec54db123d_738f47e2-9605-46aa-b647-fc8d945hf34.png','挂式耳机');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('om893446-fso2-65m3-p54m- 042i343m23ec','Sienna Miller','79',4,'288',498,'/upload/d/7/4/1/4/8/3/1/a9e691b-43a2-ac12-82ec54db123d_738f47e2-9605-b647-fc8dca814065.png','平底职场女通勤鞋');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('f56b3641-yr2b-40a1-nh41-048468hrt23cgc','Eyeshadow','36',3,'2808',4980,'/upload/c/7/4/1/4/2/3/2/a93e691b-80d4-43a2-ac12-82ec54db723d_738f4re2-9605-46aa-b647-fg8dca81074.png','四色眼影');
+insert into `products` (`id`, `name`, `price`, `category`, `pnum`, `soldnum`,`imgurl`, `description`) values('d56b9451-yr2b-me12-864s-048468hrt23cgc','Cleaning cream','46',3,'208',480,'/upload/b/2/4/1/7/2/1/2/a93e691b-bec3-84c2-ky67-82ec54db723d_738f4re2-9605-46aa-b647-fg8dca88454.png','洗面奶');
+
+select count(*) from products;
+
